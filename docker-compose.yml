@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+   emby:
+      image: emby/embyserver:armv7
+      container_name: emby_container_compose
+      restart: always
+      ports:
+         - '8096:8096'
+         - '8920:8920'
+      volumes:
+         - "./programdata:/config"
+         - "/mnt/sandisk:/mnt/share1"
+      env_file: 
+         - ./common.env
+      network_mode: "host"
